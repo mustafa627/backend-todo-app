@@ -1,5 +1,7 @@
 import cors from "cors";
 import express from "express";
+import dotenv from "dotenv"
+
 import { mongoose } from "mongoose";
 import TodoData from "./schema.js";
 const app = express();
@@ -10,8 +12,8 @@ app.use(cors({
     origin: '*', 
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }));
-
-const uri = "mongodb+srv://aweb1727:aweb1727@cluster0.e5zfq16.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+dotenv.config()
+const uri =  process.env.URI;
 
 mongoose
     .connect(uri)
