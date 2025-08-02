@@ -1,11 +1,9 @@
+import cors from "cors";
 import express from "express";
 import { mongoose } from "mongoose";
-import cors from "cors";
 import TodoData from "./schema.js";
 const app = express();
 const port = process.env.PORT || 5500;
-import path from "path"
-import { fileURLToPath } from "url";
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
