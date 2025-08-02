@@ -6,8 +6,10 @@ const app = express();
 const port = process.env.PORT || 5500;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-
+app.use(cors({
+    origin: '*', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  }));
 
 const uri = "mongodb+srv://aweb1727:aweb1727@cluster0.e5zfq16.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -20,7 +22,7 @@ mongoose
 
  
 app.get("/", (req, res)=> {
-    res.send("hellsever running on post 3000")
+    res.send("sever running on post 3000")
 })
 
 
@@ -106,7 +108,7 @@ app.delete("/deleteAllTodo", async (req, res) => {
 
  
 
- 
+ app.listen(port, ()=>  console.log(`server runnin on ${port}`))
 
 // Export for Vercel
 export default app;
